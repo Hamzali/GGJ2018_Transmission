@@ -15,11 +15,13 @@ public class PlayerController : NetworkBehaviour{
 	public float speedMultipler;
 	Animator ani;
 	public float speedLimit;
+	int charType;
 	// Use this for initialization
 	void Start () {
 		if (!isLocalPlayer) {
 			return;
 		} else {
+			
 			//Vector2 collisionNormal = new Vector2(Get0,0);
 			GetComponent<AudioListener> ().enabled = true;
 			rb = this.GetComponent<Rigidbody2D> ();
@@ -123,8 +125,17 @@ public class PlayerController : NetworkBehaviour{
 			}
 		}
 	}
+	/*
 	public override void OnStartLocalPlayer()
 	{
-		GetComponent<SpriteRenderer>().color = Color.blue;
-	}
+		charType = GameObject.FindGameObjectsWithTag ("Player").Length;
+		if (charType == 1) {
+			GetComponent<SpriteRenderer> ().color = Color.blue;
+
+
+		} else {
+			GetComponent<SpriteRenderer>().color = Color.yellow;
+		}
+		//GetComponent<SpriteRenderer>().color = Color.blue;
+	}*/
 }
