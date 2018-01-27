@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
     MazeManager mazeManager;
+
+    public GameObject spawnObject;
+    public Vector3 p1SpawnPos;
+    public Vector3 p2SpawnPos;
     // Use this for initialization
     void Awake () {
         if (instance == null) {
@@ -31,6 +35,8 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
+        Instantiate(spawnObject, p1SpawnPos, Quaternion.identity).name = "Spawn Position1";
+        Instantiate(spawnObject, p2SpawnPos, Quaternion.identity).name = "Spawn Position2";
     }
 
     void Update() {

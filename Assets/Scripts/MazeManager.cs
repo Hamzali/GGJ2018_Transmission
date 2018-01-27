@@ -220,11 +220,12 @@ public class MazeManager : MonoBehaviour {
     public void SpawnCheckPoints() {
 
         int checkPointRange = height / checkPointCount;
+        var parentObj = new GameObject("CheckPoints");
 
         for (int i = 0; i < checkPointCount; i++) {
             int randY = randomGenerator.Next(i * checkPointRange, (i + 1) * checkPointRange);
             int randX = randomGenerator.Next(0, width);
-            checkPoints.Add(Instantiate(CheckPoint, Index2Vector(randX, randY), Quaternion.identity));
+            checkPoints.Add(Instantiate(CheckPoint, Index2Vector(randX, randY), Quaternion.identity, parentObj.transform));
             checkPointCells.Add(maze[randX, randY]);
         }
 
@@ -251,13 +252,14 @@ public class MazeManager : MonoBehaviour {
         );
 
         var pMap = new Dictionary<MazeCell, bool>();
+        var parentObj = new GameObject("Paths");
 
         int totalPipeCount = 0;
         foreach(var path in shortestPaths) {
             var pathColor = new Color(randomGenerator.Next(0, 255) / 255f, randomGenerator.Next(0, 255) / 255f, randomGenerator.Next(0, 255) / 255f, 0.5f);
             foreach(var cell in path) {
                 if (!pMap.ContainsKey(cell)) {
-                    var pathObj = Instantiate(PathWay, Index2Vector(cell.x, cell.y), Quaternion.identity);
+                    var pathObj = Instantiate(PathWay, Index2Vector(cell.x, cell.y), Quaternion.identity, parentObj.transform);
                     pathObj.GetComponent<SpriteRenderer>().color = pathColor;
                     totalPipeCount++;
                 } 

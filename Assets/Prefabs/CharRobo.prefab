@@ -113,7 +113,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.5
 --- !u!81 &81146819983657230
 AudioListener:
   m_ObjectHideFlags: 1
@@ -152,8 +152,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1644373340162708, guid: 6016ab210e0441c45b6788b2d021cae3,
     type: 2}
   bulletSpawn: {fileID: 4359346734699826}
-  jumpPowerUp: 7
-  jumpPowerNormal: 6
+  jumpPowerUp: 4
+  jumpPowerNormal: 3
   speedMultipler: 1
   speedLimit: 5
 --- !u!114 &114334450183967550
