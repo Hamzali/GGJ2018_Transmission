@@ -43,6 +43,16 @@ public class GameManager : MonoBehaviour {
         mazeManager.SpawnPipes();
     }
 
+	public void ActivatePath(GameObject checkpoint) {
+		if (checkpoint.tag == "Endpoint") {
+			mazeManager.ActivatePath (mazeManager.checkPoints.Count);
+			return;
+		}
+		int c = mazeManager.checkPoints.IndexOf (checkpoint);
+		mazeManager.ActivatePath (c);
+	
+	}
+
     int i = 0;
     void Update() {
         if (Input.GetKeyDown(KeyCode.A)) {

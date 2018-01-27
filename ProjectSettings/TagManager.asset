@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Cable
   - Checker
+  - Endpoint
   layers:
   - Default
   - TransparentFX

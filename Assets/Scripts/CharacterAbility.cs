@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 public class CharacterAbility : NetworkBehaviour {
 	public int charType;
 	int cableCount;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -42,8 +43,19 @@ public class CharacterAbility : NetworkBehaviour {
 				print ("CharType is " + charType.ToString());
 				if (charType == 2) {
 					//col.gameObject.GetComponent<CheckerBehavior> ().SetActive();
+					//CmdSetActive(col.gameObject);
+					GameManager.instance.ActivatePath(col.gameObject);
 
-					CmdSetActive(col.gameObject);
+				}
+			}
+		} else if (col.gameObject.tag == "Endpoint") {
+			if (Input.GetKey (KeyCode.C)) {
+				print ("CharType is " + charType.ToString());
+				if (charType == 2) {
+					//col.gameObject.GetComponent<CheckerBehavior> ().SetActive();
+					//CmdSetActive(col.gameObject);
+					GameManager.instance.ActivatePath(col.gameObject);
+
 				}
 			}
 		}
