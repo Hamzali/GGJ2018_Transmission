@@ -231,7 +231,7 @@ public class MazeManager : MonoBehaviour {
 
     }
 
-    
+    public List<GameObject> pathObjects = new List<GameObject>();
     int FindCheckPointPaths() {
         // initial path
         shortestPaths.Add(
@@ -252,11 +252,14 @@ public class MazeManager : MonoBehaviour {
         );
 
         var pMap = new Dictionary<MazeCell, bool>();
-        var parentObj = new GameObject("Paths");
+        
 
         int totalPipeCount = 0;
+        int pathIndex = 0;
         foreach(var path in shortestPaths) {
             var pathColor = new Color(randomGenerator.Next(0, 255) / 255f, randomGenerator.Next(0, 255) / 255f, randomGenerator.Next(0, 255) / 255f, 0.5f);
+            var parentObj = new GameObject("path" + pathIndex);
+            
             foreach(var cell in path) {
                 if (!pMap.ContainsKey(cell)) {
                     var pathObj = Instantiate(PathWay, Index2Vector(cell.x, cell.y), Quaternion.identity, parentObj.transform);
@@ -264,6 +267,9 @@ public class MazeManager : MonoBehaviour {
                     totalPipeCount++;
                 } 
             }
+            parentObj.SetActive(false);
+            pathObjects.Add(parentObj);
+            pathIndex++;
         }
         return totalPipeCount;
     }
@@ -317,5 +323,14 @@ public class MazeManager : MonoBehaviour {
         path.Reverse();
 
         return path;
+    }
+
+    public void ActivatePath(int pathIndex) {
+        if (pathIndex > pathObjects.Count - 1) {
+            Debug.Log("Wrong Path Index");
+            return;
+        }
+
+        pathObjects[pathIndex].SetActive(true);
     }
 }
