@@ -17,13 +17,14 @@ public class CharacterAbility : NetworkBehaviour {
 	public override void OnStartLocalPlayer()
 	{
 		charType = GameObject.FindGameObjectsWithTag ("Player").Length;
+
 		if (charType == 1) {
-			GetComponent<SpriteRenderer> ().color = Color.blue;
-			GetComponent<Animator> ().SetInteger ("charType",1);
+			//GetComponent<SpriteRenderer> ().color = Color.blue;
+			this.gameObject.GetComponent<Animator> ().SetInteger ("charType",1);
 
 
 		} else {
-			GetComponent<SpriteRenderer>().color = Color.yellow;
+			//GetComponent<SpriteRenderer>().color = Color.yellow;
 		}
 		//GetComponent<SpriteRenderer>().color = Color.blue;
 	}

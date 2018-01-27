@@ -15,7 +15,7 @@ public class PlayerController : NetworkBehaviour{
 	public float speedMultipler;
 	Animator ani;
 	public float speedLimit;
-	int charType;
+	int charTypeC;
 	// Use this for initialization
 	void Start () {
 		if (!isLocalPlayer) {
@@ -165,8 +165,8 @@ public class PlayerController : NetworkBehaviour{
 	/*
 	public override void OnStartLocalPlayer()
 	{
-		charType = GameObject.FindGameObjectsWithTag ("Player").Length;
-		if (charType == 1) {
+		charTypeC = GameObject.FindGameObjectsWithTag ("Player").Length;
+		if (charTypeC == 1) {
 			GetComponent<SpriteRenderer> ().color = Color.blue;
 
 
