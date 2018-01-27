@@ -93,7 +93,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 3
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -113,7 +113,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.6
+  m_Radius: 0.6
 --- !u!81 &81146819983657230
 AudioListener:
   m_ObjectHideFlags: 1
@@ -152,10 +152,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1644373340162708, guid: 6016ab210e0441c45b6788b2d021cae3,
     type: 2}
   bulletSpawn: {fileID: 4359346734699826}
-  jumpPowerUp: 15
-  jumpPowerNormal: 12
-  speedMultipler: 5
-  speedLimit: 10
+  jumpPowerUp: 7
+  jumpPowerNormal: 6
+  speedMultipler: 1
+  speedLimit: 5
 --- !u!114 &114334450183967550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ad5860f7b02d04fbf44e4293c55a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: -2}
 --- !u!114 &114853971202177734
 MonoBehaviour:
   m_ObjectHideFlags: 1
