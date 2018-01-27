@@ -39,11 +39,16 @@ public class GameManager : MonoBehaviour {
         Instantiate(spawnObject, p2SpawnPos, Quaternion.identity).name = "Spawn Position2";
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.A)) {
-            // mazeManager.FindShortestPath(5, 0, 8, 13);
-        }    
+    public void SpawnPipes() {
+        mazeManager.SpawnPipes();
     }
 
+    int i = 0;
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.A)) {
+            // mazeManager.ActivatePath(i);
+            // i++;
+        }    
+    }
 
 }
