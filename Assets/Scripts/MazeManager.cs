@@ -37,7 +37,7 @@ public class MazeManager : MonoBehaviour {
 
         pipeCount = FindCheckPointPaths();
 
-        SpawnPipes();
+        // SpawnPipes();
     }
 
     public class MazeCell {
@@ -200,8 +200,10 @@ public class MazeManager : MonoBehaviour {
 			randX = randomGenerator.Next(0, width);
 			randY = randomGenerator.Next(0, height);
 			var randPos = Index2Vector(randX, randY);
-
-			if (!CheckPipeExists(randPos) || tryCount > 4) {
+            bool isStartPoint = randX == startX && randY == startY;
+            bool isEndPoint = randX == endX && randY == endY;
+            
+			if (!isStartPoint && !isEndPoint &&  !CheckPipeExists(randPos) || tryCount > 4) {
 				var pipeInstance = Instantiate(Pipe, randPos, Quaternion.identity);
 				pipeInstance.transform.parent = pipeParent.transform;
 				pipeList.Add(pipeInstance);

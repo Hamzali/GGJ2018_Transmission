@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour {
         Instantiate(spawnObject, p2SpawnPos, Quaternion.identity).name = "Spawn Position2";
     }
 
+    public void SpawnPipes() {
+        mazeManager.SpawnPipes();
+    }
+
     int i = 0;
     void Update() {
         if (Input.GetKeyDown(KeyCode.A)) {
@@ -46,6 +50,5 @@ public class GameManager : MonoBehaviour {
             // i++;
         }    
     }
-
 
 }

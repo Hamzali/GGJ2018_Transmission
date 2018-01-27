@@ -60,13 +60,14 @@ MonoBehaviour:
   EndPoint: {fileID: 1582217469611768, guid: 98d185347e7cf43c299f1be855e96ad1, type: 2}
   CheckPoint: {fileID: 1701882155546580, guid: de2b944a85776461597ebe6880cc2dad, type: 2}
   PathWay: {fileID: 1500641610859598, guid: 5879481a5f2424b109a07a4b1709058d, type: 2}
-  width: 20
-  height: 20
+  width: 10
+  height: 10
   pipeCount: 0
   seed: 
   useRandomSeed: 1
-  checkPointCount: 2
+  checkPointCount: 1
   checkPoints: []
+  pathObjects: []
 --- !u!114 &114052364681648436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,5 +180,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 1379121315264038, guid: 417ae641102c9fa42b5ef2d3e9b9f0a8,
     type: 2}
-  p1SpawnPos: {x: 10, y: 10, z: 0}
+  p1SpawnPos: {x: 3, y: 3, z: 0}
   p2SpawnPos: {x: 5, y: 5, z: 0}
