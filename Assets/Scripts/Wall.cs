@@ -11,7 +11,7 @@ public class Wall : MonoBehaviour {
 	public void setWalls(int left, int right, int up, int down) {
 		leftWall.SetActive(right == 0);
 		rightWall.SetActive(left == 0);
-		upWall.SetActive(up == 0);
-		downWall.SetActive(down == 0);
+		upWall.SetActive(down == 0);
+		downWall.SetActive(up == 0);
 	}
 }
