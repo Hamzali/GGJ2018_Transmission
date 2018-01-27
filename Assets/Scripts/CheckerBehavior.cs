@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class CheckerBehavior : NetworkBehaviour{
 	public bool isActive = false;
-
+	Animator ani;
 	// Use this for initialization
 	void Start () {
 		

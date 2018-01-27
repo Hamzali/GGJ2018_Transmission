@@ -19,6 +19,7 @@ public class CharacterAbility : NetworkBehaviour {
 		charType = GameObject.FindGameObjectsWithTag ("Player").Length;
 		if (charType == 1) {
 			GetComponent<SpriteRenderer> ().color = Color.blue;
+			GetComponent<Animator> ().SetInteger ("charType",1);
 
 
 		} else {
