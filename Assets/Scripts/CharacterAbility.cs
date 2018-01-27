@@ -55,7 +55,6 @@ public class CharacterAbility : NetworkBehaviour {
 					//col.gameObject.GetComponent<CheckerBehavior> ().SetActive();
 					//CmdSetActive(col.gameObject);
 					GameManager.instance.ActivatePath(col.gameObject);
-
 				}
 			}
 		}
