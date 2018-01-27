@@ -15,11 +15,13 @@ public class PlayerController : NetworkBehaviour{
 	public float speedMultipler;
 	Animator ani;
 	public float speedLimit;
+	int charTypeC;
 	// Use this for initialization
 	void Start () {
 		if (!isLocalPlayer) {
 			return;
 		} else {
+			
 			//Vector2 collisionNormal = new Vector2(Get0,0);
 			GetComponent<AudioListener> ().enabled = true;
 			rb = this.GetComponent<Rigidbody2D> ();
@@ -41,7 +43,8 @@ public class PlayerController : NetworkBehaviour{
 		transform.position = transform.position + Vector3.right*x*6.0f*Time.deltaTime;
 
 		if (Mathf.Abs (x) > 0) {
-			ani.SetBool ("isMoving", true);	
+			//ani.SetBool ("isMoving", true);	
+			CmdSetAnimator ("isMoving",true);
 			/*if (rb.velocity.magnitude < speedLimit ) {
 				print (!wallCollision);
 				if (wallCollision) {
@@ -51,10 +54,12 @@ public class PlayerController : NetworkBehaviour{
 				}
 			} */
 			if (x < 0)
-				GetComponent<SpriteRenderer> ().flipX = true;
-			else GetComponent<SpriteRenderer> ().flipX = false;
+				CmdFlip (true);
+			else
+				CmdFlip (false);
 		} else {
-			ani.SetBool ("isMoving", false);	
+			//ani.SetBool ("isMoving", false);
+			CmdSetAnimator ("isMoving",false);
 		} 
 
 		if (Input.GetKeyDown(KeyCode.Space))
@@ -95,7 +100,8 @@ public class PlayerController : NetworkBehaviour{
 		if (isLocalPlayer) {
 			if (col.gameObject.tag == "Wall") {
 				wallCollision = true;
-				ani.SetBool ("onAir", false);
+				//ani.SetBool ("onAir", false);
+				CmdSetAnimator("onAir",false);
 				//GetComponent<Animator> ().SetBool ("onAir", false);
 				collisionNormal = (col.contacts [0].point - new Vector2 (transform.position.x, transform.position.y)).normalized;
 				print (collisionNormal);
@@ -108,7 +114,8 @@ public class PlayerController : NetworkBehaviour{
 			if (col.gameObject.tag == "Wall") {
 				wallCollision = true;
 				//ani.SetBool ("onAir", false);	
-				GetComponent<Animator> ().SetBool ("onAir", false);
+				//GetComponent<Animator> ().SetBool ("onAir", false);
+				CmdSetAnimator("onAir",false);
 				collisionNormal = (col.contacts [0].point - new Vector2 (transform.position.x, transform.position.y)).normalized;
 			}
 		}
@@ -117,14 +124,55 @@ public class PlayerController : NetworkBehaviour{
 	void OnCollisionExit2D(Collision2D col) {
 		if (isLocalPlayer) {
 			if (col.gameObject.tag == "Wall") {
-				ani.SetBool ("onAir", true);	
+				//ani.SetBool ("onAir", true);	
+				CmdSetAnimator("onAir",true);
 				//GetComponent<Animator> ().SetBool ("onAir", true);
 				wallCollision = false;
 			}
 		}
 	}
+	[ClientRpc]
+	void RpcSetAnimator(string key,bool state) {
+		GetComponent<Animator> ().SetBool(key,state);
+		//ani.SetBool(key,state);
+
+	}
+
+	[Command]
+	void CmdSetAnimator(string key, bool state) {
+		GetComponent<NetworkIdentity> ().AssignClientAuthority (connectionToClient);
+		RpcSetAnimator (key,state);
+		//GetComponent<NetworkIdentity> ().RemoveClientAuthority (connectionToClient);
+
+
+	}
+
+	[ClientRpc]
+	void RpcFlip(bool state) {
+		GetComponent<SpriteRenderer> ().flipX = state;
+		//ani.SetBool(key,state);
+
+	}
+
+	[Command]
+	void CmdFlip(bool state) {
+		GetComponent<NetworkIdentity> ().AssignClientAuthority (connectionToClient);
+		RpcFlip(state);
+		//GetComponent<NetworkIdentity> ().RemoveClientAuthority (connectionToClient);
+
+
+	}
+	/*
 	public override void OnStartLocalPlayer()
 	{
-		GetComponent<SpriteRenderer>().color = Color.blue;
-	}
+		charTypeC = GameObject.FindGameObjectsWithTag ("Player").Length;
+		if (charTypeC == 1) {
+			GetComponent<SpriteRenderer> ().color = Color.blue;
+
+
+		} else {
+			GetComponent<SpriteRenderer>().color = Color.yellow;
+		}
+		//GetComponent<SpriteRenderer>().color = Color.blue;
+	}*/
 }
