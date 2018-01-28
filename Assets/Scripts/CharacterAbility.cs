@@ -98,6 +98,7 @@ public class CharacterAbility : NetworkBehaviour {
 		
 		go.AddComponent<BuiltCable>().SetIndex(x, y);
 		go.AddComponent<BoxCollider2D>().isTrigger = true;
+		go.GetComponent<BoxCollider2D> ().size = new Vector2 (0.23f,0.23f);
 	}
 
 	public override void OnStartLocalPlayer () {
