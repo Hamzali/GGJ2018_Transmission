@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4687538527156542}
   - component: {fileID: 61684391986527456}
+  - component: {fileID: 114728465000371506}
   m_Layer: 0
   m_Name: EndPoint
   m_TagString: Endpoint
@@ -95,6 +96,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6673905, y: 1.2036794}
   m_EdgeRadius: 0
+--- !u!114 &114728465000371506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582217469611768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/3D Sounds/Mazend
+  PlayEvent: 1
+  StopEvent: 5
+  CollisionTag: Player
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!212 &212779586625074110
 SpriteRenderer:
   m_ObjectHideFlags: 1
