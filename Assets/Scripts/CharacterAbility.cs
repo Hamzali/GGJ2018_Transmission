@@ -24,13 +24,20 @@ public class CharacterAbility : NetworkBehaviour {
 	void Update () {
 
 		if (charType == 1) {
+			/*
 			if (Input.GetKeyDown (KeyCode.B)) {
 				builtMode = !builtMode;
 				collectMode = !collectMode;
 
 			}
 
+
 			if (builtMode && Input.GetKey(KeyCode.C)) {
+				BuildCable ();
+			}
+			*/
+			//Old version of code
+			if (Input.GetKey(KeyCode.B)) {
 				BuildCable ();
 			}
 		}
@@ -129,8 +136,9 @@ public class CharacterAbility : NetworkBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.gameObject.tag == "Cable" || col.gameObject.tag == "BuiltCable") {
-			if (charType == 1 && collectMode) {
-				takeCable (col.gameObject);
+			if (charType == 1) {
+				if(Input.GetKey(KeyCode.C))
+					takeCable (col.gameObject);
 			}
 		}
 
@@ -154,6 +162,11 @@ public class CharacterAbility : NetworkBehaviour {
 					//CmdSetActive(col.gameObject);
 					GameManager.instance.ActivatePath (col.gameObject);
 				}
+			}
+		} else if (col.gameObject.tag == "Cable" || col.gameObject.tag == "BuiltCable") {
+			if (charType == 1) {
+				if(Input.GetKey(KeyCode.C))
+				takeCable (col.gameObject);
 			}
 		}
 	}
