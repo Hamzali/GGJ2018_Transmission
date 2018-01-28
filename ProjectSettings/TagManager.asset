@@ -8,6 +8,8 @@ TagManager:
   - Cable
   - Checker
   - Endpoint
+  - Cell
+  - BuiltCable
   layers:
   - Default
   - TransparentFX

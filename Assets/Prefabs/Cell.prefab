@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114761818817214592}
   m_Layer: 0
   m_Name: Cell
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,6 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9045ab8b389c14f52b065671f809fb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indexX: 0
+  indexY: 0
+  isBuilt: 0
   leftWall: {fileID: 1223911433496000}
   rightWall: {fileID: 1145118621480586}
   upWall: {fileID: 1465692581198484}

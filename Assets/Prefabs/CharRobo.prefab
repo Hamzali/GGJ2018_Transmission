@@ -168,6 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charType: 0
+  currentCell: {fileID: 0}
+  previousCell: {fileID: 0}
+  BuiltCable: {fileID: 1238362212302716, guid: 6ee6dd294ba1a44b7b234574af1c13cf, type: 2}
 --- !u!114 &114573779627441738
 MonoBehaviour:
   m_ObjectHideFlags: 1

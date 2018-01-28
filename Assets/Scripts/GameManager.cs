@@ -33,10 +33,25 @@ public class GameManager : MonoBehaviour {
         
         
     }
-
+    
     void Start() {
+        p1SpawnPos = mazeManager.Index2Vector(0, 1);
+        p2SpawnPos = mazeManager.Index2Vector(0, mazeManager.width - 1);
+
         Instantiate(spawnObject, p1SpawnPos, Quaternion.identity).name = "Spawn Position1";
         Instantiate(spawnObject, p2SpawnPos, Quaternion.identity).name = "Spawn Position2";
+
+        foreach(var path in mazeManager.pathObjects) {
+            int x = (int)path.transform.position.x;
+            int y = (int)path.transform.position.y;
+
+            var cell = GetCellByIndex(x, y);
+
+            if (!pathDict.ContainsKey(cell)) {
+                pathDict.Add(cell, false);
+            }
+
+        }
     }
 
     public void SpawnPipes() {
@@ -52,6 +67,28 @@ public class GameManager : MonoBehaviour {
 		mazeManager.ActivatePath (c);
 	
 	}
+
+    public GameObject GetCellByIndex(int i, int j) {
+        return mazeManager.cellList[i * mazeManager.width + j];
+    }
+
+     Dictionary<GameObject, bool> pathDict = new Dictionary<GameObject, bool>();
+
+    public bool CheckWinCodition() {
+        foreach(bool val in pathDict.Values) {
+            if (!val) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void UpdatePathDict(GameObject cell, bool value) {
+        if (pathDict.ContainsKey(cell)) {
+            pathDict[cell] = value;
+        }
+    }
+        
 
     int i = 0;
     void Update() {

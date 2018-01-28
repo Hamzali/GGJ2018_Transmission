@@ -16,6 +16,7 @@ public class PlayerController : NetworkBehaviour {
 	Animator ani;
 	public float speedLimit;
 	int charTypeC;
+
 	// Use this for initialization
 	void Start () {
 		if (!isLocalPlayer) {
@@ -104,6 +105,7 @@ public class PlayerController : NetworkBehaviour {
 
 			}
 		}
+		
 	}
 	void OnCollisionStay2D (Collision2D col) {
 		if (isLocalPlayer) {

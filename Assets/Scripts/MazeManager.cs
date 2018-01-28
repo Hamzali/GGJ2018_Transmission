@@ -12,7 +12,7 @@ public class MazeManager : MonoBehaviour {
     public int height;
 
     int startX, startY, endX, endY;
-    Vector3 startPosition, endPosition;
+    public Vector3 startPosition, endPosition;
     public int pipeCount = 0;
     public string seed;
     public bool useRandomSeed;
@@ -162,6 +162,7 @@ public class MazeManager : MonoBehaviour {
         return null;
     }
     
+    public List<GameObject> cellList = new List<GameObject>();
     public void DrawMaze () {
         
         if (MazeObject) {
@@ -175,8 +176,12 @@ public class MazeManager : MonoBehaviour {
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     GameObject cellObj = Instantiate(Cell, Index2Vector(x, y), Quaternion.identity);
-                    cellObj.GetComponent<Wall>().setWalls(maze[x, y].left, maze[x, y].right, maze[x, y].up, maze[x, y].down);
+                    var wallComp = cellObj.GetComponent<Wall>();
+                    wallComp.setWalls(maze[x, y].left, maze[x, y].right, maze[x, y].up, maze[x, y].down);
+                    wallComp.indexX = x;
+                    wallComp.indexY = y;
                     cellObj.transform.parent = MazeObject.transform;
+                    cellList.Add(cellObj);
                 }
             }
         }

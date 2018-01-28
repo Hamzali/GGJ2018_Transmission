@@ -5,6 +5,8 @@ using UnityEngine;
 public class Wall : MonoBehaviour {
 
 	// Use this for initialization
+	public int indexX, indexY;
+	public bool isBuilt = false;
 	
 	public GameObject leftWall, rightWall, upWall, downWall;
 

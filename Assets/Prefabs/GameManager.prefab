@@ -65,6 +65,7 @@ MonoBehaviour:
   pipeCount: 0
   seed: 
   useRandomSeed: 1
+  cellList: []
   checkPointCount: 1
   checkPoints: []
   pathObjects: []
@@ -97,6 +98,7 @@ MonoBehaviour:
   m_SpawnPrefabs:
   - {fileID: 1644373340162708, guid: 6016ab210e0441c45b6788b2d021cae3, type: 2}
   - {fileID: 1333339189642894, guid: 91b5a5cd1c1ebc941932f0b5a630676f, type: 2}
+  - {fileID: 1238362212302716, guid: 6ee6dd294ba1a44b7b234574af1c13cf, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -139,7 +141,7 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 
+  m_Channels: 0500000000000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
