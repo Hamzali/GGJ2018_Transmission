@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 public class CharacterAbility : NetworkBehaviour {
 	public int charType;
 	int cableCount;
-
+	Text infoText;
 	// Use this for initialization
 	void Start () {
-
+		infoText = GameObject.Find ("infoText").GetComponent<Text> ();
 	}
 
 	// Update is called once per frame
@@ -81,7 +82,7 @@ public class CharacterAbility : NetworkBehaviour {
 				GameManager.instance.UpdatePathDict(currentCell, true);
 				CmdBuiltCableNetwork(pos, rot, currWall.indexX, currWall.indexY);
 				cableCount--;
-
+				infoText.text = "Cable Count: " + cableCount.ToString ();
 				if (GameManager.instance.CheckWinCodition()) {
 					Debug.Log("Winnnn!!!");
 				}
@@ -105,6 +106,7 @@ public class CharacterAbility : NetworkBehaviour {
 		if (charType == 1) {
 			//GetComponent<SpriteRenderer> ().color = Color.blue;
 			this.gameObject.GetComponent<Animator> ().SetInteger ("charType", 1);
+
 
 		} else {
 			this.gameObject.GetComponent<Animator> ().SetInteger ("charType", 2);
@@ -177,6 +179,7 @@ public class CharacterAbility : NetworkBehaviour {
 		
 		Destroy (cable);
 		cableCount += 1;
+		infoText.text = "Cable Count: " + cableCount.ToString ();
 		print ("Cable count is " + cableCount);
 	}
 	/*

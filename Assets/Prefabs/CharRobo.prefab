@@ -152,8 +152,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1644373340162708, guid: 6016ab210e0441c45b6788b2d021cae3,
     type: 2}
   bulletSpawn: {fileID: 4359346734699826}
-  jumpPowerUp: 4
-  jumpPowerNormal: 10
+  jumpPowerUp: 8
+  jumpPowerNormal: 5
   speedMultipler: 0.7
   speedLimit: 5
 --- !u!114 &114334450183967550
