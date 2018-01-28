@@ -153,8 +153,8 @@ MonoBehaviour:
     type: 2}
   bulletSpawn: {fileID: 4359346734699826}
   jumpPowerUp: 4
-  jumpPowerNormal: 3
-  speedMultipler: 1
+  jumpPowerNormal: 10
+  speedMultipler: 0.7
   speedLimit: 5
 --- !u!114 &114334450183967550
 MonoBehaviour:
