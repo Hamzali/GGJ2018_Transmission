@@ -18,17 +18,31 @@ public class CharacterAbility : NetworkBehaviour {
 	public override void OnStartLocalPlayer()
 	{
 		charType = GameObject.FindGameObjectsWithTag ("Player").Length;
-
+		print ("CharType"+charType);
 		if (charType == 1) {
 			//GetComponent<SpriteRenderer> ().color = Color.blue;
 			this.gameObject.GetComponent<Animator> ().SetInteger ("charType",1);
 
 
 		} else {
+			this.gameObject.GetComponent<Animator> ().SetInteger ("charType",2);
 			//GetComponent<SpriteRenderer>().color = Color.yellow;
 		}
 		//GetComponent<SpriteRenderer>().color = Color.blue;
+		if(!isServer) {
+			foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player")) {
+				if (go == this.gameObject) {
+					continue;
+				
+				}
+				go.GetComponent<CharacterAbility>().charType = 1;
+				go.GetComponent<Animator> ().SetInteger ("charType",1);
+			}
+		}
+
 	}
+
+
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.tag == "Cable") {
 			if (charType == 1) {
@@ -78,9 +92,10 @@ public class CharacterAbility : NetworkBehaviour {
 		print ("Cable count is " + cableCount);
 	}
 	/*
+	 
 	[Command]
 	public void CmdSetActive(GameObject go) {
 		go.GetComponent<CheckerBehavior> ().SetActive ();
 	}
-*/
+	*/
 }
