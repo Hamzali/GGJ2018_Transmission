@@ -5,9 +5,19 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
-    MazeManager mazeManager;
 
+
+
+    // In game data.
+
+    // maze generation and spawn
+    public GameObject mazeManagerObject;
+    MazeManager mazeManager;
+    MazeGenerator mazeGenerator;
     public GameObject spawnObject;
+
+
+    // players data.
     public Vector3 p1SpawnPos;
     public Vector3 p2SpawnPos;
     // Use this for initialization
@@ -21,26 +31,25 @@ public class GameManager : MonoBehaviour {
         }
 
         DontDestroyOnLoad (this);
-
-        // Get other managers.
-        mazeManager = this.GetComponent<MazeManager>();
-
-        InitGame ();
     }
 
-    void InitGame () {
-        Debug.Log ("Initializing Game...");
-        
-        
-    }
-    
     void Start() {
-        p1SpawnPos = mazeManager.Index2Vector(0, 1);
-        p2SpawnPos = mazeManager.Index2Vector(0, mazeManager.width - 1);
 
+        InitGame();
+        
+    }
+
+    void InitGame() {
+        // Create the maze manager to initialize the random level.
+        mazeManagerObject = Instantiate(mazeManagerObject);
+        mazeManager = mazeManagerObject.GetComponent<MazeManager>();
+        mazeGenerator = mazeManagerObject.GetComponent<MazeGenerator>();
+        mazeManager.InitMaze();
+
+        // Set player start points.
         Instantiate(spawnObject, p1SpawnPos, Quaternion.identity).name = "Spawn Position1";
         Instantiate(spawnObject, p2SpawnPos, Quaternion.identity).name = "Spawn Position2";
-
+        
         foreach(var path in mazeManager.pathObjects) {
             int x = (int)path.transform.position.x;
             int y = (int)path.transform.position.y;
@@ -51,9 +60,8 @@ public class GameManager : MonoBehaviour {
                 pathDict.Add(cell, false);
             }
 
-        }
+        }        
     }
-
     public void SpawnPipes() {
         mazeManager.SpawnPipes();
     }
@@ -69,9 +77,10 @@ public class GameManager : MonoBehaviour {
 	}
 
     public GameObject GetCellByIndex(int i, int j) {
-        return mazeManager.cellList[i * mazeManager.width + j];
+        return mazeGenerator.GetMazeCellObjectByIndex(i, j);
     }
 
+    // Win condition check.
      Dictionary<GameObject, bool> pathDict = new Dictionary<GameObject, bool>();
 
     public bool CheckWinCodition() {
@@ -88,14 +97,4 @@ public class GameManager : MonoBehaviour {
             pathDict[cell] = value;
         }
     }
-        
-
-    int i = 0;
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.A)) {
-            // mazeManager.ActivatePath(i);
-            // i++;
-        }    
-    }
-
 }

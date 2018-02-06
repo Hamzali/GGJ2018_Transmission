@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4130342311956112}
   - component: {fileID: 114720973388955378}
-  - component: {fileID: 114003165263238474}
   - component: {fileID: 114124486434546660}
   - component: {fileID: 114052364681648436}
   m_Layer: 0
@@ -43,34 +42,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114003165263238474
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1550736897432112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66dae74b90a3d4dacadb3b54e29f720b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Cell: {fileID: 1250002805737346, guid: 5b9431472b8974aa18fa5664908a4cb0, type: 2}
-  Pipe: {fileID: 1899092058703114, guid: e735f79a15cc94cfaa2d9a23faa3c883, type: 2}
-  StartPoint: {fileID: 1063598388494232, guid: ba47465ab64ea43c38d647149bccbb0b, type: 2}
-  EndPoint: {fileID: 1582217469611768, guid: 98d185347e7cf43c299f1be855e96ad1, type: 2}
-  CheckPoint: {fileID: 1701882155546580, guid: de2b944a85776461597ebe6880cc2dad, type: 2}
-  PathWay: {fileID: 1500641610859598, guid: 5879481a5f2424b109a07a4b1709058d, type: 2}
-  width: 10
-  height: 10
-  startPosition: {x: 0, y: 0, z: 0}
-  endPosition: {x: 0, y: 0, z: 0}
-  pipeCount: 0
-  seed: 
-  useRandomSeed: 1
-  cellList: []
-  checkPointCount: 1
-  checkPoints: []
-  pathObjects: []
 --- !u!114 &114052364681648436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381c57948271a474c970024b504b56a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mazeManagerObject: {fileID: 1364930420184626, guid: 24e0effe936ff46e096b9de21d7ab4a9,
+    type: 2}
   spawnObject: {fileID: 1379121315264038, guid: 417ae641102c9fa42b5ef2d3e9b9f0a8,
     type: 2}
   p1SpawnPos: {x: 3, y: 3, z: 0}
