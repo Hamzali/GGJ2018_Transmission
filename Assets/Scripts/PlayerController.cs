@@ -75,6 +75,7 @@ public class PlayerController : NetworkBehaviour {
 	}
 	void Jump () {
 		rb.velocity += Vector2.up * jumpPowerUp - collisionNormal * jumpPowerNormal;
+		FMODUnity.RuntimeManager.PlayOneShot("event:/3D Sounds/Jump");
 	}
 
 	[Command]
